@@ -1,0 +1,19 @@
+name: ClamedApi
+on:
+  workflow_dispatch:  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, Word  
+  deploy:
+   runs-on: ubuntu-latest
+   environment:
+     name: desenvolvimento
+     url: 'uol.com.br'
+   needs: build
+   steps:
+    - name: Run a one-line script
+      run: echo Desenvolvimento
