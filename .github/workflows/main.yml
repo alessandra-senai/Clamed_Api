@@ -7,13 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        run: echo Hello, Word  
-  deploy:
+        run: echo Hello, Word 
+        
+  deploy-dev:
    runs-on: ubuntu-latest
    environment:
-     name: desenvolvimento
+     name: Desenvolvimento
      url: 'uol.com.br'
    needs: build
    steps:
     - name: Run a one-line script
-      run: echo Desenvolvimento
+      run: echo deploy Desenvolvimento
+  
+  deploy-hom:
+   runs-on: ubuntu-latest
+   environment:
+     name: Homologacao
+     url: 'uol.com.br'
+   needs: deploy-dev
+   steps:
+    - name: Run a one-line script
+      run: echo deploy Homologacao
